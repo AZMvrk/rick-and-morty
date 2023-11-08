@@ -1,0 +1,45 @@
+/* -----css reset ----- */
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+/* -----css reset ends----- */
+
+html{
+  background-color: aliceblue;
+}
+
+div#root{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+
+  padding: 20px;
+
+}
+
+div.char{
+  border: 3px solid black;
+
+}
+
+div.char h2, h3{
+  text-align: center;
+}
+
+div.char h2{
+  margin-top: 10px;
+}
+
+div.char h3{
+  margin-bottom: 10px;
+}
+
+div.char img {
+  border-bottom: 2px solid black;
+}

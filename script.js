@@ -10,13 +10,19 @@ const characterComponent = (characterData) => `
   </div>
 `
 
-const init = () => {
-  fetchUrl("https://rickandmortyapi.com/api/character").then(data => {
-    const info = data.info // info object
-    const characters = data.results // characters array
+const buttonComponent = (id, text) => `<`
 
-    characters.forEach(character => rootElement.insertAdjacentHTML("beforeend", characterComponent(character)))
-  })
+
+
+const makeDomFromData = (data, rootElement) => {
+  const info = data.info // info object
+  const characters = data.results // characters array
+
+  characters.forEach(character => rootElement.insertAdjacentHTML("beforeend", characterComponent(character)))
+}
+
+const init = () => {
+  fetchUrl("https://rickandmortyapi.com/api/character").then(data => makeDomFromData(data, rootElement))
 }
 
 init()

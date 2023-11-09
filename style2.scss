@@ -1,0 +1,58 @@
+/* --- CSS RESET --- */
+* {
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+/* --- CSS RESET END --- */
+html {
+  background-color: rgb(180, 211, 180);
+}
+
+h1 {
+  text-align: center;
+  margin: 30px 0 20px 0;
+  font-family: "Roboto", sans-serif;
+}
+
+div.characters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+div.char {
+  border: 2px solid black;
+}
+div.char h2,
+div.char h3 {
+  text-align: center;
+}
+div.char h2 {
+  margin-top: 10px;
+  font-family: "Oswald", sans-serif;
+}
+div.char h3 {
+  margin-bottom: 10px;
+  font-family: "Roboto", sans-serif;
+}
+div.char img {
+  border-bottom: 2px solid black;
+}
+
+div.buttons {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 0 auto;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+div.buttons button {
+  padding: 12px 20px;
+  font-size: 24px;
+}/*# sourceMappingURL=style2.css.map */

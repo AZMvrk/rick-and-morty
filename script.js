@@ -3,6 +3,7 @@ const rootElement = document.querySelector("#root")
 const fetchUrl = (url) => fetch(url).then(res => res.json())
 
 const skeletonComponent = () => `
+  <h1>Rick & Morty app</h1>
   <div class="characters"></div>
   <div class="buttons"></div>
 `
@@ -38,12 +39,16 @@ const makeDomFromData = (data, rootElement) => {
   characters.forEach(character => charactersElement.insertAdjacentHTML("beforeend", characterComponent(character)))
 
   if (info.prev) {
-    buttonsElement.insertAdjacentHTML("beforeend", buttonComponent("prev", "previous"))
+    buttonsElement.insertAdjacentHTML("beforeend", buttonComponent("prev", `
+      <span class="material-icons">arrow_back</span>
+    `))
     buttonEventComponent("prev", info.prev)
   }
 
   if (info.next) {
-    buttonsElement.insertAdjacentHTML("beforeend", buttonComponent("next", "next"))
+    buttonsElement.insertAdjacentHTML("beforeend", buttonComponent("next", `
+      <span class="material-icons">arrow_forward</span>
+    `))
     buttonEventComponent("next", info.next)
   }
 }

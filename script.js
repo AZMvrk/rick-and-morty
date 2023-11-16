@@ -2,18 +2,31 @@ const rootElement = document.querySelector("#root")
 
 const fetchUrl = (url) => fetch(url).then(res => res.json())
 
-const skeletonComponent = () => `
+/* const skeletonComponent = () => `
   <h1>Rick & Morty app</h1>
   <p id="selected-card"></p>
   <div class="characters"></div>
   <div class="buttons"></div>
+` */
+
+const skeletonComponent = () => `
+  <h1>Rick & Morty app</h1>
+  <div class="characters" style="
+    display: flex; 
+    justify-content: 
+    center; gap: 20px; 
+    flex-wrap: wrap;
+  "></div>
+  <div class="buttons" style="position: fixed; bottom: 0; right: 0;"></div>
 `
 
 const characterComponent = (characterData) => ` 
-  <div class="char">
-    <img src=${characterData.image}>
-    <h2>${characterData.name}</h2>
-    <h3>appears in: ${characterData.episode.length} episodes</h3>
+  <div class="card text-center border-success" style="max-width: 15rem;">
+    <img src=${characterData.image} class="card-img-top" alt="...">
+    <div class="card-body text-success">
+      <h5 class="card-title">${characterData.name}</h5>
+      <h6 class="card-subtitle mb-2">appears in: ${characterData.episode.length} episodes</h6>
+    </div>
   </div>
 `
 
@@ -32,7 +45,7 @@ const selectedCharacterComponent = (characterData) => {
   <h6>episodes: ${episodesArray.join(', ')}</h6>
 `}
 
-const buttonComponent = (id, text) => `<button id=${id}>${text}</button>`
+const buttonComponent = (id, text) => `<button id=${id} class="btn btn-outline-info">${text}</button>`
 
 const buttonEventComponent = (id, url) => {
   const buttonElement = document.querySelector(`#${id}`)
@@ -42,14 +55,14 @@ const buttonEventComponent = (id, url) => {
     fetchUrl(url).then(data => {
       makeDomFromData(data, rootElement)
 
-      const selectedCharElement = document.querySelector("#selected-card")
+      /* const selectedCharElement = document.querySelector("#selected-card")
 
       const charElements = document.querySelectorAll(".char")
       charElements.forEach(charElement => charElement.addEventListener("click", () => {
         const selectedName = charElement.querySelector("h2").innerText // pl. Rick Sanchez, Morty Smith, Abradolf Lincler
         const selectedChar = characterList.find((char) => char.name === selectedName)
         selectedCharElement.innerHTML = selectedCharacterComponent(selectedChar)
-      }))
+      })) */
     })
   })
 }
@@ -87,15 +100,15 @@ const init = () => {
   fetchUrl("https://rickandmortyapi.com/api/character").then(data => {
     makeDomFromData(data, rootElement)
 
-    const selectedCharElement = document.querySelector("#selected-card")
+    /* const selectedCharElement = document.querySelector("#selected-card")
 
     const charElements = document.querySelectorAll(".char")
-    charElements.forEach(charElement => charElement.addEventListener("click", () => {
+    charElements.forEach(charElement => charElement.addEventListener("click", (event) => {
       const selectedName = charElement.querySelector("h2").innerText // pl. Rick Sanchez, Morty Smith, Abradolf Lincler
       const characterList = data.results
       const selectedChar = characterList.find((char) => char.name === selectedName)
       selectedCharElement.innerHTML = selectedCharacterComponent(selectedChar)
-    }))
+    })) */
   })
 }
 

@@ -4,21 +4,51 @@ const fetchUrl = (url) => fetch(url).then(res => res.json())
 
 
 const skeletonComponent = () => `
-  <h1>Rick & Morty app</h1>
-  <div class="characters" style="
-    display: flex; 
-    justify-content: 
-    center; gap: 20px; 
-    flex-wrap: wrap;
-  "></div>
-  <div class="buttons" style="position: fixed; bottom: 0; right: 0;"></div>
+  <h1 style="
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    border-bottom: 2px solid #17a2b8; 
+    margin: 1rem;
+    color: #17a2b8;
+    ">Rick & Morty characters
+  </h1>
+
+  <div class="characters" 
+    style="
+      display: flex; 
+      justify-content: center; 
+      gap: 20px; 
+      flex-wrap: wrap;
+    ">
+  </div>
+  <div class="buttons" 
+    style="
+      position: static; 
+      bottom: 0; 
+      display: flex; 
+      justify-content: center; 
+      max-width: 98vw;
+      margin: 0 auto;
+      margin-top: 1rem; 
+      border-top: 2px solid #17a2b8;
+      padding: 1rem;
+      gap: 1rem; 
+    ">
+  </div>
 `
 
 const characterComponent = (characterData) => {
   return `
-    <div class="card text-center border-success character-card" style="max-width: 15rem; cursor: pointer;" data-character-id="${characterData.id}">
+    <div class="card text-center border-light character-card" 
+      style="
+        max-width: 15rem; 
+        cursor: pointer;" 
+
+        data-character-id="${characterData.id}">
+
       <img src=${characterData.image} class="card-img-top" alt="${characterData.name}">
-      <div class="card-body text-success">
+      <div class="card-body text-info">
         <h5 class="card-title">${characterData.name}</h5>
       </div>
     </div>
@@ -31,7 +61,7 @@ function createModal() {
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Character Details</h5>
+            <h5 class="modal-title" style="color: #17a2b8;">Character Details</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" id="modalCharacterContent">
@@ -56,7 +86,7 @@ const selectedCharacterComponent = (characterData) => {
 
   return `
   <img src=${characterData.image} class="card-img-top" alt="${characterData.name}">
-  <h2>${characterData.name}</h2>
+  <h2 style="display: flex; justify-content: center; margin: 0.5rem;">${characterData.name}</h2>
   <ul>
     <li>Species: ${characterData.species}</li>
     <li>Origin: ${characterData.origin.name}</li>
@@ -91,7 +121,7 @@ function showModal(characterData) {
 
   modalContent.innerHTML = selectedCharacterComponent(characterData)
 
-  // Using Bootstrap's Modal JavaScript class to handle the modal
+  // using bootstrap's modal javascript class to handle the modal
   let modal = new bootstrap.Modal(modalElement)
   modal.show()
 }
@@ -120,7 +150,6 @@ const makeDomFromData = (data, rootElement) => {
       }
     })
   })
-
 
 
   if (info.prev) {

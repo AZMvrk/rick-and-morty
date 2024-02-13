@@ -8,9 +8,9 @@ const skeletonComponent = () => `
     display: flex;
     justify-content: center;
     padding: 1rem;
-    border-bottom: 2px solid #17a2b8; 
+    border-bottom: 2px solid #007bff; 
     margin: 1rem;
-    color: #17a2b8;
+    color: #007bff;
     ">Rick & Morty characters
   </h1>
 
@@ -31,7 +31,7 @@ const skeletonComponent = () => `
       max-width: 98vw;
       margin: 0 auto;
       margin-top: 1rem; 
-      border-top: 2px solid #17a2b8;
+      border-top: 2px solid #007bff;
       padding: 1rem;
       gap: 1rem; 
     ">
@@ -48,7 +48,7 @@ const characterComponent = (characterData) => {
         data-character-id="${characterData.id}">
 
       <img src=${characterData.image} class="card-img-top" alt="${characterData.name}">
-      <div class="card-body text-info">
+      <div class="card-body text-light">
         <h5 class="card-title">${characterData.name}</h5>
       </div>
     </div>
@@ -61,7 +61,7 @@ function createModal() {
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" style="color: #17a2b8;">Character Details</h5>
+            <h5 class="modal-title" style="color: #007bff;">Character Details</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" id="modalCharacterContent">
@@ -98,7 +98,7 @@ const selectedCharacterComponent = (characterData) => {
   //<p>Episodes: ${episodesArray.join(', ')}</p>
 }
 
-const buttonComponent = (id, text) => `<button id=${id} class="btn btn-outline-info">${text}</button>`
+const buttonComponent = (id, text) => `<button id=${id} class="btn btn-outline-primary">${text}</button>`
 
 const buttonEventComponent = (id, url) => {
   const buttonElement = document.querySelector(`#${id}`)
